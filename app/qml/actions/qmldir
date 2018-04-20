@@ -1,0 +1,2 @@
+singleton AuthAction 0.1 AuthAction.qml
+singleton AuthKey 0.1 AuthKey.qml

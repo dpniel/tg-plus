@@ -1,0 +1,15 @@
+{
+    "name": "telegram-plus.dpniel",
+    "description": "ALterna",
+    "architecture": "@CLICK_ARCH@",
+    "title": "Telegram Plus",
+    "hooks": {
+        "telegram-plus": {
+            "apparmor": "telegram-plus.apparmor",
+            "desktop":  "telegram-plus.desktop"
+        }
+    },
+    "version": "0.1.1",
+    "maintainer": "Dan Chapman <dan@ubports.com>",
+    "framework" : "ubuntu-sdk-15.04.5"
+}
