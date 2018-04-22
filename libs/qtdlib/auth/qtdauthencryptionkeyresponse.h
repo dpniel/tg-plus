@@ -2,9 +2,9 @@
 #define QTDAUTHENCRYPTIONKEYRESPONSE_H
 
 #include <QObject>
-#include "common/qabstracttdobject.h"
+#include "common/qtdrequest.h"
 
-class QTdAuthEncryptionKeyResponse : public QAbstractTdObject
+class QTdAuthEncryptionKeyResponse : public QTdRequest
 {
     Q_OBJECT
 public:

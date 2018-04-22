@@ -5,20 +5,33 @@
 #include "qtelegram.h"
 #include "authmanager.h"
 #include "users.h"
+#include "chatlist.h"
 
 #include <auth/qtdauthstate.h>
+#include <chat/qtdchat.h>
 #include <connections/qtdconnectionstate.h>
 #include <user/qtduser.h>
+#include <files/qtdfile.h>
 
 void QTelegramPlugin::registerTypes(const char *uri) {
     //@uri QTelegram
     qmlRegisterSingletonType<QTelegram>(uri, 1, 0, "QTelegram", [](QQmlEngine*, QJSEngine*) -> QObject* { return new QTelegram; });
-
     qmlRegisterType<AuthState>(uri, 1, 0, "AuthState");
     qmlRegisterType<AuthParams>(uri, 1, 0, "AuthParams");
+    qmlRegisterType<Users>(uri, 1, 0, "Users");
+    qmlRegisterType<ChatList>(uri, 1, 0, "ChatList");
 
     // qtdlib common
     qmlRegisterUncreatableType<QAbstractTdObject>(uri, 1, 0, "QTdObject", "Base TD c++ class");
+
+    // qtdlib chat
+    qmlRegisterUncreatableType<QTdChat>(uri, 1, 0, "QTdChat", "c++ class");
+    qmlRegisterUncreatableType<QTdChatType>(uri, 1, 0, "QTdChatType", "abstract c++ class");
+    qmlRegisterUncreatableType<QTdChatTypeBasicGroup>(uri, 1, 0, "QTdChatTypeBasicGroup", "c++ class");
+    qmlRegisterUncreatableType<QTdChatTypePrivate>(uri, 1, 0, "QTdChatTypePrivate", "c++ class");
+    qmlRegisterUncreatableType<QTdChatTypeSecret>(uri, 1, 0, "QTdChatTypeSecret", "Bc++ class");
+    qmlRegisterUncreatableType<QTdChatTypeSuperGroup>(uri, 1, 0, "QTdChatTypeSuperGroup", "c++ class");
+//    qmlRegisterUncreatableType<QAbstractTdObject>(uri, 1, 0, "QTdObject", "c++ class");
 
     // qtdlib auth
     qmlRegisterUncreatableType<QTdAuthState>(uri, 1, 0, "QTdAuthState", "Base TD auth state class");
@@ -42,8 +55,6 @@ void QTelegramPlugin::registerTypes(const char *uri) {
     qmlRegisterUncreatableType<QTdConnectionStateReady>(uri, 1, 0, "QTdConnectionStateReady", "c++ class");
 
     // qtdlib users
-    qmlRegisterType<Users>(uri, 1, 0, "Users");
-
     qmlRegisterUncreatableType<QTdUser>(uri, 1, 0, "QTdUser", "c++ class");
     qmlRegisterUncreatableType<QTdUserStatus>(uri, 1, 0, "QTdUserStatus", "Abstract status type");
     qmlRegisterUncreatableType<QTdUserStatusEmpty>(uri, 1, 0, "QTdUserStatusEmpty", "c++ class");
@@ -52,5 +63,20 @@ void QTelegramPlugin::registerTypes(const char *uri) {
     qmlRegisterUncreatableType<QTdUserStatusOffline>(uri, 1, 0, "QTdUserStatusOffline", "c++ class");
     qmlRegisterUncreatableType<QTdUserStatusOnline>(uri, 1, 0, "QTdUserStatusOnline", "c++ class");
     qmlRegisterUncreatableType<QTdUserStatusRecently>(uri, 1, 0, "QTdUserStatusRecently", "c++ class");
+    qmlRegisterUncreatableType<QTdProfilePhoto>(uri, 1, 0, "QTdProfilePhoto", "c++ class");
+    qmlRegisterUncreatableType<QTdLinkState>(uri, 1, 0, "QTdProfilePhoto", "Abstract class");
+    qmlRegisterUncreatableType<QTdLinkStateIsContact>(uri, 1, 0, "QTdLinkStateIsContact", "c++ class");
+    qmlRegisterUncreatableType<QTdLinkStateKnowsPhoneNumber>(uri, 1, 0, "QTdLinkStateKnowsPhoneNumber", "c++ class");
+    qmlRegisterUncreatableType<QTdLinkStateNone>(uri, 1, 0, "QTdLinkStateNone", "c++ class");
+    qmlRegisterUncreatableType<QTdUserType>(uri, 1, 0, "QTdUserType", "Abstract class");
+    qmlRegisterUncreatableType<QTdUserTypeBot>(uri, 1, 0, "QTdUserTypeBot", "c++ class");
+    qmlRegisterUncreatableType<QTdUserTypeDeleted>(uri, 1, 0, "QTdUserTypeDeleted", "c++ class");
+    qmlRegisterUncreatableType<QTdUserTypeRegular>(uri, 1, 0, "QTdUserTypeRegular", "c++ class");
+    qmlRegisterUncreatableType<QTdUserTypeUnknown>(uri, 1, 0, "QTdUserTypeUnknown", "c++ class");
+
+    // qtdlib files
+    qmlRegisterUncreatableType<QTdFile>(uri, 1, 0, "QTdFile", "c++ class");
+    qmlRegisterUncreatableType<QTdLocalFile>(uri, 1, 0, "QTdLocalFile", "c++ class");
+    qmlRegisterUncreatableType<QTdRemoteFile>(uri, 1, 0, "QTdRemoteFile", "c++ class");
 
 }

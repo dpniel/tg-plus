@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.4.1, 2018-04-20T10:19:51. -->
+<!-- Written by QtCreator 4.4.1, 2018-04-21T06:18:32. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -343,7 +343,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">tg_cli</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">tg_cli</value>
@@ -399,7 +399,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">generate_mime_types_gperf</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/tdutils/generate</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/tdutils/generate</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">generate_mime_types_gperf</value>
@@ -455,7 +455,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">bench_queue</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/benchmark</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/benchmark</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">bench_queue</value>
@@ -511,7 +511,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">bench_log</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/benchmark</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/benchmark</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">bench_log</value>
@@ -567,7 +567,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">wget</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/benchmark</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/benchmark</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">wget</value>
@@ -623,7 +623,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">rmdir</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/benchmark</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/benchmark</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">rmdir</value>
@@ -679,7 +679,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">bench_misc</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/benchmark</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/benchmark</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">bench_misc</value>
@@ -735,7 +735,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">bench_http_server</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/benchmark</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/benchmark</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">bench_http_server</value>
@@ -791,7 +791,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">bench_actor</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/benchmark</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/benchmark</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">bench_actor</value>
@@ -847,7 +847,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">bench_http</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/benchmark</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/benchmark</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">bench_http</value>
@@ -903,7 +903,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">bench_crypto</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/benchmark</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/benchmark</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">bench_crypto</value>
@@ -959,7 +959,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">bench_http_server_cheat</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/benchmark</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/benchmark</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">bench_http_server_cheat</value>
@@ -1015,7 +1015,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">remove_documentation</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/td/generate</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/td/generate</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">remove_documentation</value>
@@ -1071,7 +1071,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">bench_http_server_fast</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/benchmark</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/benchmark</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">bench_http_server_fast</value>
@@ -1127,7 +1127,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">bench_empty</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/benchmark</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/benchmark</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">bench_empty</value>
@@ -1183,7 +1183,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">bench_http_reader</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/benchmark</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/benchmark</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">bench_http_reader</value>
@@ -1239,7 +1239,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">bench_handshake</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/benchmark</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/benchmark</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">bench_handshake</value>
@@ -1295,7 +1295,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">bench_db</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/benchmark</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/benchmark</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">bench_db</value>
@@ -1351,7 +1351,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">bench_tddb</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/benchmark</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/benchmark</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">bench_tddb</value>
@@ -1407,7 +1407,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">telegram-plus</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/app</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/app</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes">
      <value type="QString">QML2_IMPORT_PATH=/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/plugins</value>
@@ -1465,7 +1465,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">td_generate_java_api</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/td/generate</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/td/generate</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">td_generate_java_api</value>
@@ -1521,7 +1521,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">generate_common</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/td/generate</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/td/generate</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">generate_common</value>
@@ -1577,7 +1577,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">generate_json</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/td/generate</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/td/generate</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">generate_json</value>
@@ -1633,7 +1633,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">generate_c</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/td/generate</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/td/generate</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">generate_c</value>
@@ -1689,7 +1689,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">example</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/tdactor</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/tdactor</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">example</value>
@@ -1745,7 +1745,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">binlog_dump</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/tddb</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/tddb</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">binlog_dump</value>
@@ -1801,7 +1801,7 @@
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguation.Title">run_all_tests</value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.Arguments"></value>
     <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory"></value>
-    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/tmp/QtCreator-IdBEEp/qtc-cmake-XXNtMz6I/libs/tdlib/test</value>
+    <value type="QString" key="CMakeProjectManager.CMakeRunConfiguration.UserWorkingDirectory.default">/home/ubuntu/Projects/build-telegram-plus-Desktop-Debug/libs/tdlib/test</value>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">run_all_tests</value>

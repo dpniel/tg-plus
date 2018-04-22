@@ -10,11 +10,15 @@ set(
     auth/qtdauthencryptionkeyresponse.cpp
     auth/qtdauthphonenumberresponse.cpp
     auth/qtdauthcoderesponse.cpp
+    chat/qtdchat.cpp
+    chat/qtdchattype.cpp
+    chat/requests/qtdgetchatsrequest.cpp
     common/qabstracttdobject.cpp
-    common/qabstractint32id.cpp
     common/qabstractint53id.cpp
+    common/qabstractint32id.cpp
     common/qabstractint64id.cpp
     common/qtdint.cpp
+    common/qtdrequest.cpp
     client/qtdhandle.cpp
     client/qtdclient.cpp
     client/qtdthread.cpp
@@ -23,10 +27,16 @@ set(
     files/qtdfile.cpp
     files/qtdlocalfile.cpp
     files/qtdremotefile.cpp
+    files/qtddownloadfilerequest.cpp
+    messages/qtdmessage.cpp
     user/qtduser.cpp
     user/qtdlinkstate.cpp
+    user/qtdlinkstatefactory.cpp
     user/qtduserstatus.cpp
+    user/qtdusertype.cpp
     user/qtduserstatusfactory.cpp
+    user/qtdprofilephoto.cpp
+    user/requests/qtdblockuserrequest.cpp
 )
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)

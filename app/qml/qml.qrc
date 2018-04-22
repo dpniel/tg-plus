@@ -13,5 +13,6 @@
         <file>pages/WaitCodePage.qml</file>
         <file>pages/ChatListPage.qml</file>
         <file>stores/UsersStateStore.qml</file>
+        <file>stores/ChatStateStore.qml</file>
     </qresource>
 </RCC>

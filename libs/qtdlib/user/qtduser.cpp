@@ -1,8 +1,14 @@
 #include "qtduser.h"
 #include "qtduserstatusfactory.h"
+#include "qtdlinkstatefactory.h"
 
 QTdUser::QTdUser(QObject *parent) : QAbstractInt32Id(parent),
-  m_status(Q_NULLPTR)
+  m_status(Q_NULLPTR),
+  m_profilePhoto(Q_NULLPTR),
+  m_outgoingLink(Q_NULLPTR),
+  m_incomingLink(Q_NULLPTR),
+  m_isVerified(false),
+  m_userType(Q_NULLPTR)
 {
     setType(USER);
 }
@@ -14,19 +20,89 @@ void QTdUser::unmarshalJson(const QJsonObject &json)
     setUsername(json["username"].toString());
     setPhoneNumber(json["phone_number"].toString());
     setStatus(QTdUserStatusFactory::create(json["status"].toObject(), this));
-
+    m_isVerified = json["is_verified"].toBool();
+    emit isVerifiedChanged(m_isVerified);
+    m_restrictionReason = json["restriction_reason"].toString();
+    emit restrictionReasonChanged(m_restrictionReason);
+    m_languageCode = json["language_code"].toString();
+    emit languageCodeChanged(m_languageCode);
     const QJsonObject typeObj = json["type"].toObject();
     const QString type = typeObj["@type"].toString();
     if (type == "userTypeRegular") {
         setType(USER_TYPE_REGULAR);
+        m_userType = new QTdUserTypeRegular(this);
     } else if (type == "userTypeBot") {
-        setType(USER_TYPE_BOT);
+        m_userType = new QTdUserTypeBot(this);
     } else if (type == "userTypeDeleted") {
-        setType(USER_TYPE_DELETED);
+        m_userType = new QTdUserTypeDeleted(this);
     } else if (type == "userTypeUnknown") {
-        setType(USER_TYPE_UNKNOWN);
+        m_userType = new QTdUserTypeUnknown(this);
     }
+    m_userType->unmarshalJson(typeObj);
+
+    if (m_profilePhoto) {
+        delete m_profilePhoto;
+        m_profilePhoto = 0;
+    }
+    m_profilePhoto = new QTdProfilePhoto(this);
+    m_profilePhoto->unmarshalJson(json["profile_photo"].toObject());
+    emit profilePhotoChanged(m_profilePhoto);
+    const bool hasProfilePhoto = m_profilePhoto->small()->id() > 0;
+    const bool needsDownload = m_profilePhoto->small()->local()->path().isEmpty();
+    if (hasProfilePhoto && needsDownload) {
+        m_profilePhoto->small()->downloadFile();
+    }
+
+    if (m_outgoingLink) {
+        delete m_outgoingLink;
+        m_outgoingLink = 0;
+    }
+    m_outgoingLink = QTdLinkStateFactory::create(json["outgoing_link"].toObject(), this);
+    emit outgoingLinkChanged(m_outgoingLink);
+
+    if (m_incomingLink) {
+        delete m_incomingLink;
+        m_incomingLink = 0;
+    }
+    m_incomingLink = QTdLinkStateFactory::create(json["incoming_link"].toObject(), this);
+    emit incomingLinkChanged(m_incomingLink);
+
     QAbstractInt32Id::unmarshalJson(json);
+}
+
+QTdUserType *QTdUser::userType() const
+{
+    return m_userType;
+}
+
+QString QTdUser::restrictionReason() const
+{
+    return m_restrictionReason;
+}
+
+QString QTdUser::languageCode() const
+{
+    return m_languageCode;
+}
+
+bool QTdUser::isVerified() const
+{
+    return m_isVerified;
+}
+
+QTdLinkState *QTdUser::outgoingLink() const
+{
+    return m_outgoingLink;
+}
+
+QTdLinkState *QTdUser::incomingLink() const
+{
+    return m_incomingLink;
+}
+
+QTdProfilePhoto *QTdUser::profilePhoto() const
+{
+    return m_profilePhoto;
 }
 
 QTdUserStatus *QTdUser::status() const

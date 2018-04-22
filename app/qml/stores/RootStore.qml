@@ -11,4 +11,9 @@ Store {
     UsersStateStore {
         id: usersStore
     }
+
+    property alias chats: chatsStore
+    ChatStateStore {
+        id: chatsStore
+    }
 }

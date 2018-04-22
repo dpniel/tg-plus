@@ -1,6 +1,6 @@
 #include "qtdauthencryptionkeyresponse.h"
 
-QTdAuthEncryptionKeyResponse::QTdAuthEncryptionKeyResponse(QObject *parent) : QAbstractTdObject(parent)
+QTdAuthEncryptionKeyResponse::QTdAuthEncryptionKeyResponse(QObject *parent) : QTdRequest(parent)
 {
 }
 

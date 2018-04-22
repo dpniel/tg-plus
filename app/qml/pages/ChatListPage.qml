@@ -6,28 +6,37 @@ import "../stores"
 
 Page {
     id: waitCodePage
-
     header: PageHeader {
         title: "Chat List"
     }
-
     ListView {
         anchors.fill: parent
-
-        model: Telegram.users.model
+        model: Telegram.chats.list
         delegate: ListItem {
             height: layout.implicitHeight
-            property QtObject user: model.qtObject
+            property QTdChat chat: model.qtObject
             ListItemLayout {
                 id: layout
-                title.text: user.username
-                subtitle.text: user.firstName + " " + user.lastName
-                summary.text: user.id
-
-                Icon {
-                    name: user.status.type === QTdUserStatus.USER_STATUS_ONLINE ? "ok" : "close"
-                    height: units.gu(3)
+                title.text: chat.title
+                UbuntuShape {
+                    height: units.gu(5)
                     width: height
+                    source: Image {
+                        source: Qt.resolvedUrl("file://" + chat.chatPhoto.small.local.path)
+                    }
+                    SlotsLayout.position: SlotsLayout.Leading
+                }
+
+                UbuntuShape {
+                    height: units.gu(3)
+                    width: units.gu(3)
+                    color: UbuntuColors.green
+                    visible: parseInt(chat.unreadCount) > 0
+                    Label {
+                        anchors.centerIn: parent
+                        text: chat.unreadCount
+                        color: "white"
+                    }
                 }
             }
         }

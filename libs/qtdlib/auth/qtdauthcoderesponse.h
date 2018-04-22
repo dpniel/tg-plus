@@ -2,9 +2,9 @@
 #define QTDAUTHCODERESPONSE_H
 
 #include <QObject>
-#include "common/qabstracttdobject.h"
+#include "common/qtdrequest.h"
 
-class QTdAuthCodeResponse : public QAbstractTdObject
+class QTdAuthCodeResponse : public QTdRequest
 {
     Q_OBJECT
 public:

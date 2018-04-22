@@ -8,6 +8,7 @@ set(
     authmanager.cpp
     authparams.cpp
     users.cpp
+    chatlist.cpp
     models/QmlObjectListModel.cpp
     models/QmlVariantListModel.cpp
 )

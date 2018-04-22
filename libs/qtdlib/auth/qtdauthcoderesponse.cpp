@@ -1,6 +1,6 @@
 #include "qtdauthcoderesponse.h"
 
-QTdAuthCodeResponse::QTdAuthCodeResponse(QObject *parent) : QAbstractTdObject(parent)
+QTdAuthCodeResponse::QTdAuthCodeResponse(QObject *parent) : QTdRequest(parent)
 {
 
 }

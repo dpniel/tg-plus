@@ -2,9 +2,9 @@
 #define QTDAUTHPHONENUMBERRESPONSE_H
 
 #include <QObject>
-#include "common/qabstracttdobject.h"
+#include "common/qtdrequest.h"
 
-class QTdAuthPhoneNumberResponse : public QAbstractTdObject
+class QTdAuthPhoneNumberResponse : public QTdRequest
 {
     Q_OBJECT
 public:

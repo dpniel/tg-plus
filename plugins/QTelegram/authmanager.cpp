@@ -132,6 +132,13 @@ void AuthState::handleAuthStateChanged(QTdAuthState *state)
     {
         m_state = Ready;
         emit ready();
+        QTdClient::instance()->send(QJsonObject {
+                                        { "@type",       "getChats" },
+                                        { "offset_order", "1000000" },
+                                        { "offset_chat_id", 1000000 },
+                                        { "limit",          1000000 },
+                                    }
+                                    );
         break;
     }
     case QTdAuthState::Type::AUTHORIZATION_STATE_LOGGING_OUT:

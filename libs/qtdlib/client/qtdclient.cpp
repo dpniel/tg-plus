@@ -57,7 +57,7 @@ QTdConnectionState *QTdClient::connectionState() const
     return m_connectionState;
 }
 
-void QTdClient::send(QAbstractTdObject *obj)
+void QTdClient::send(QTdRequest *obj)
 {
     // Take ownership of the object and schedule
     // it's deletion when done;
@@ -75,7 +75,7 @@ void QTdClient::send(const QJsonObject &json)
     QtConcurrent::run(sendTd, json);
 }
 
-QFuture<QJsonObject> QTdClient::exec(QAbstractTdObject *obj)
+QFuture<QJsonObject> QTdClient::exec(QTdRequest *obj)
 {
     // Take ownership of the object and schedule
     // it's deletion when done;
@@ -108,6 +108,12 @@ void QTdClient::handleRecv(const QJsonObject &data)
         qDebug() << "Emitting updateUserStatus";
         const QString userId = QString::number(qint32(data["user_id"].toInt()));
         emit updateUserStatus(userId, data["status"].toObject());
+    } else if (type == "updateFile") {
+        qDebug() << "Emitting updateFile";
+        emit updateFile(data["file"].toObject());
+    } else if (type == "updateNewChat") {
+        qDebug() << "Emitting updateNewChat";
+        emit updateNewChat(data["chat"].toObject());
     }
 }
 

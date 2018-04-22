@@ -2,9 +2,9 @@
 #define QTDAUTHPARAMETERSRESPONSE_H
 
 #include <QObject>
-#include "common/qabstracttdobject.h"
+#include "common/qtdrequest.h"
 
-class QTdAuthParametersResponse : public QAbstractTdObject
+class QTdAuthParametersResponse : public QTdRequest
 {
     Q_OBJECT
 public:

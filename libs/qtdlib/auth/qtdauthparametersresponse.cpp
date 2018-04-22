@@ -1,6 +1,6 @@
 #include "qtdauthparametersresponse.h"
 
-QTdAuthParametersResponse::QTdAuthParametersResponse(QObject *parent) : QAbstractTdObject(parent)
+QTdAuthParametersResponse::QTdAuthParametersResponse(QObject *parent) : QTdRequest(parent)
 {
 }
 

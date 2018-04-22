@@ -8,6 +8,7 @@
 #include <QJsonObject>
 #include "auth/qtdauthstate.h"
 #include "connections/qtdconnectionstate.h"
+#include "common/qtdrequest.h"
 
 /**
  * @brief The QTdClient class
@@ -44,7 +45,7 @@ public:
      * QTdClient will take ownership of obj and schedule deletion once
      * it is done with it,
      */
-    void send(QAbstractTdObject *obj);
+    void send(QTdRequest *obj);
     void send(const QJsonObject &json);
     /**
      * @brief Execute synchronous request in another Thread
@@ -56,7 +57,7 @@ public:
      * QTdClient will take ownership of obj and schedule deletion once
      * it is done with it,
      */
-    QFuture<QJsonObject> exec(QAbstractTdObject *obj);
+    QFuture<QJsonObject> exec(QTdRequest *obj);
     QFuture<QJsonObject> exec(const QJsonObject &json);
 
 signals:
@@ -64,6 +65,8 @@ signals:
     void connectionStateChanged(QTdConnectionState *state);
     void updateUser(QJsonObject user);
     void updateUserStatus(QString user_id, QJsonObject status);
+    void updateFile(QJsonObject file);
+    void updateNewChat(QJsonObject chat);
 
 private slots:
     void handleRecv(const QJsonObject &data);
