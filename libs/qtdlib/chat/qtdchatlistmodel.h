@@ -1,17 +1,17 @@
-#ifndef CHATLIST_H
-#define CHATLIST_H
+#ifndef QTDCHATLISTMODEL_H
+#define QTDCHATLISTMODEL_H
 
 #include <QObject>
-#include <qtdlib/chat/qtdchat.h>
-#include <qtdlib/models/QmlObjectListModel.h>
-#include <qtdlib/auth/qtdauthstate.h>
+#include "auth/qtdauthstate.h"
+#include "models/QmlObjectListModel.h"
+#include "qtdchat.h"
 
-class ChatList : public QObject
+class QTdChatListModel : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QObject* model READ model NOTIFY modelChanged)
 public:
-    explicit ChatList(QObject *parent = nullptr);
+    explicit QTdChatListModel(QObject *parent = nullptr);
 
     QObject* model() const;
 
@@ -29,4 +29,4 @@ private:
     QQmlObjectListModel<QTdChat> *m_model;
 };
 
-#endif // CHATLIST_H
+#endif // QTDCHATLISTMODEL_H

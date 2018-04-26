@@ -1,8 +1,8 @@
 #include "users.h"
 #include <QDebug>
-#include "client/qtdclient.h"
-#include "common/qtdint.h"
-#include "user/qtduserstatusfactory.h"
+#include <qtdlib/client/qtdclient.h>
+#include <qtdlib/common/qtdint.h>
+#include <qtdlib/user/qtduserstatusfactory.h>
 
 Users::Users(QObject *parent) : QObject(parent),
     m_model(Q_NULLPTR)

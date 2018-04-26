@@ -3,8 +3,8 @@
 
 #include <QObject>
 #include <QJsonObject>
-#include <user/qtduser.h>
-#include "models/QmlObjectListModel.h"
+#include <qtdlib/user/qtduser.h>
+#include <qtdlib/models/QmlObjectListModel.h>
 
 class Users : public QObject
 {

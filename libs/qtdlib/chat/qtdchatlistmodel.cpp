@@ -1,22 +1,22 @@
-#include "chatlist.h"
-#include <qtdlib/client/qtdclient.h>
-#include <qtdlib/chat/requests/qtdgetchatsrequest.h>
-#include <qtdlib/chat/qtdchattypefactory.h>
+#include "qtdchatlistmodel.h"
+#include "client/qtdclient.h"
+#include "chat/requests/qtdgetchatsrequest.h"
+#include "chat/qtdchattypefactory.h"
 
-ChatList::ChatList(QObject *parent) : QObject(parent),
+QTdChatListModel::QTdChatListModel(QObject *parent) : QObject(parent),
     m_model(Q_NULLPTR)
 {
     m_model = new QQmlObjectListModel<QTdChat>(this, "", "id");
-    connect(QTdClient::instance(), &QTdClient::updateNewChat, this, &ChatList::handleUpdateNewChat);
-    connect(QTdClient::instance(), &QTdClient::authStateChanged, this, &ChatList::handleAuthStateChanges);
+    connect(QTdClient::instance(), &QTdClient::updateNewChat, this, &QTdChatListModel::handleUpdateNewChat);
+    connect(QTdClient::instance(), &QTdClient::authStateChanged, this, &QTdChatListModel::handleAuthStateChanges);
 }
 
-QObject *ChatList::model() const
+QObject *QTdChatListModel::model() const
 {
     return m_model;
 }
 
-void ChatList::handleUpdateNewChat(const QJsonObject &chat)
+void QTdChatListModel::handleUpdateNewChat(const QJsonObject &chat)
 {
     qDebug() << "[UPDATING CHAT]" << chat;
     const qint64 id = qint64(chat["id"].toDouble());
@@ -32,7 +32,7 @@ void ChatList::handleUpdateNewChat(const QJsonObject &chat)
     qDebug() << "[CHAT TITLE] >> " << tdchat->title();
 }
 
-void ChatList::handleAuthStateChanges(const QTdAuthState *state)
+void QTdChatListModel::handleAuthStateChanges(const QTdAuthState *state)
 {
     switch (state->type()) {
     case QTdAuthState::Type::AUTHORIZATION_STATE_READY:

@@ -67,6 +67,11 @@ signals:
     void updateUserStatus(QString user_id, QJsonObject status);
     void updateFile(QJsonObject file);
     void updateNewChat(QJsonObject chat);
+    void updateBasicGroup(QJsonObject group);
+    void secretChat(QJsonObject chat);
+    void updateSecretChat(QJsonObject chat);
+    void superGroup(QJsonObject group);
+    void updateSuperGroup(QJsonObject group);
 
 private slots:
     void handleRecv(const QJsonObject &data);

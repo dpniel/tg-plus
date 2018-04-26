@@ -9,8 +9,7 @@ set(
     authparams.cpp
     users.cpp
     chatlist.cpp
-    models/QmlObjectListModel.cpp
-    models/QmlVariantListModel.cpp
+    messagelist.cpp
 )
 
 set(CMAKE_AUTOMOC ON)

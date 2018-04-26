@@ -7,11 +7,11 @@
 #include "users.h"
 #include "chatlist.h"
 
-#include <auth/qtdauthstate.h>
-#include <chat/qtdchat.h>
-#include <connections/qtdconnectionstate.h>
-#include <user/qtduser.h>
-#include <files/qtdfile.h>
+#include <qtdlib/auth/qtdauthstate.h>
+#include <qtdlib/chat/qtdchat.h>
+#include <qtdlib/connections/qtdconnectionstate.h>
+#include <qtdlib/user/qtduser.h>
+#include <qtdlib/files/qtdfile.h>
 
 void QTelegramPlugin::registerTypes(const char *uri) {
     //@uri QTelegram
@@ -79,4 +79,6 @@ void QTelegramPlugin::registerTypes(const char *uri) {
     qmlRegisterUncreatableType<QTdLocalFile>(uri, 1, 0, "QTdLocalFile", "c++ class");
     qmlRegisterUncreatableType<QTdRemoteFile>(uri, 1, 0, "QTdRemoteFile", "c++ class");
 
+    // qtdlib notifications
+    qmlRegisterUncreatableType<QTdNotificationSettings>(uri, 1, 0, "QTdNotificationSettings", "C++ class");
 }

@@ -5,7 +5,7 @@ import "../actions"
 import "../stores"
 
 Page {
-    id: waitCodePage
+    id: chatListPage
     header: PageHeader {
         title: "Chat List"
     }
@@ -18,6 +18,15 @@ Page {
             ListItemLayout {
                 id: layout
                 title.text: chat.title
+                summary.text: {
+                    switch (chat.chatType.type) {
+                    case QTdChatType.CHAT_TYPE_BASIC_GROUP:
+                    case QTdChatType.CHAT_TYPE_SUPERGROUP:
+                        return "Members: " + chat.memberCount
+                    default:
+                        return ""
+                    }
+                }
                 UbuntuShape {
                     height: units.gu(5)
                     width: height
@@ -28,15 +37,29 @@ Page {
                 }
 
                 UbuntuShape {
-                    height: units.gu(3)
-                    width: units.gu(3)
+                    height: units.gu(2.5)
+                    width: units.gu(2.5)
                     color: UbuntuColors.green
-                    visible: parseInt(chat.unreadCount) > 0
+                    visible: chat.hasUnreadMessages
                     Label {
                         anchors.centerIn: parent
                         text: chat.unreadCount
                         color: "white"
+                        textSize: Label.Small
                     }
+                }
+                UbuntuShape {
+                    height: units.gu(2.5)
+                    width: units.gu(2.5)
+                    color: UbuntuColors.green
+                    visible: chat.hasUnreadMentions
+                    Label {
+                        anchors.centerIn: parent
+                        text: "@" + chat.unreadMentionCount
+                        color: "white"
+                        textSize: Label.Small
+                    }
+                    SlotsLayout.position: SlotsLayout.Last
                 }
             }
         }

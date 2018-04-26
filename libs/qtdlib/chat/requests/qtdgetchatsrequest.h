@@ -2,16 +2,15 @@
 #define QTDGETCHATSREQUEST_H
 
 #include <QObject>
+#include "common/qtdrequest.h"
 
-class QTdGetChatsRequest : public QObject
+class QTdGetChatsRequest : public QTdRequest
 {
     Q_OBJECT
 public:
     explicit QTdGetChatsRequest(QObject *parent = nullptr);
 
-signals:
-
-public slots:
+    QJsonObject marshalJson() Q_DECL_FINAL;
 };
 
 #endif // QTDGETCHATSREQUEST_H

@@ -5,7 +5,7 @@ QAbstractInt53Id::QAbstractInt53Id(QObject *parent) : QAbstractTdObject(parent)
 
 }
 
-qint32 QAbstractInt53Id::id() const
+qint64 QAbstractInt53Id::id() const
 {
     return m_id.value();
 }

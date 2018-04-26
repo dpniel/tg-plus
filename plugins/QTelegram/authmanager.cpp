@@ -1,10 +1,10 @@
 #include "authmanager.h"
 #include <QDebug>
-#include <client/qtdclient.h>
-#include <auth/qtdauthencryptionkeyresponse.h>
-#include <auth/qtdauthparametersresponse.h>
-#include <auth/qtdauthphonenumberresponse.h>
-#include <auth/qtdauthcoderesponse.h>
+#include <qtdlib/client/qtdclient.h>
+#include <qtdlib/auth/qtdauthencryptionkeyresponse.h>
+#include <qtdlib/auth/qtdauthparametersresponse.h>
+#include <qtdlib/auth/qtdauthphonenumberresponse.h>
+#include <qtdlib/auth/qtdauthcoderesponse.h>
 
 AuthState::AuthState(QObject *parent) : QObject(parent),
     m_state(Invalid),
@@ -132,13 +132,6 @@ void AuthState::handleAuthStateChanged(QTdAuthState *state)
     {
         m_state = Ready;
         emit ready();
-        QTdClient::instance()->send(QJsonObject {
-                                        { "@type",       "getChats" },
-                                        { "offset_order", "1000000" },
-                                        { "offset_chat_id", 1000000 },
-                                        { "limit",          1000000 },
-                                    }
-                                    );
         break;
     }
     case QTdAuthState::Type::AUTHORIZATION_STATE_LOGGING_OUT:

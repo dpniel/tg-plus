@@ -2,7 +2,7 @@
 #define AUTHPARAMS_H
 
 #include <QObject>
-#include "common/qabstracttdobject.h"
+#include <qtdlib/common/qabstracttdobject.h>
 
 class AuthParams : public QAbstractTdObject
 {

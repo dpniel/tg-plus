@@ -11,8 +11,21 @@ set(
     auth/qtdauthphonenumberresponse.cpp
     auth/qtdauthcoderesponse.cpp
     chat/qtdchat.cpp
+    chat/qtdchatmemberstatus.cpp
+    chat/qtdbasicgroupchat.cpp
+    chat/qtdbasicgroupinfo.cpp
+    chat/qtdsecretchat.cpp
+    chat/qtdsecretchatstate.cpp
+    chat/qtdsupergroupchat.cpp
     chat/qtdchattype.cpp
+    chat/qtdchattypefactory.cpp
+    chat/qtdchatlistmodel.cpp
+    chat/qtdchatlistsortfiltermodel.cpp
+    chat/requests/qtdgetbasicgrouprequest.cpp
     chat/requests/qtdgetchatsrequest.cpp
+    chat/requests/qtdreportchatrequest.cpp
+    chat/requests/qtdgetsecretchatrequest.cpp
+    chat/requests/qtdgetsupergrouprequest.cpp
     common/qabstracttdobject.cpp
     common/qabstractint53id.cpp
     common/qabstractint32id.cpp
@@ -28,7 +41,11 @@ set(
     files/qtdlocalfile.cpp
     files/qtdremotefile.cpp
     files/qtddownloadfilerequest.cpp
+    files/qtdphoto.cpp
     messages/qtdmessage.cpp
+    models/QmlObjectListModel.cpp
+    models/QmlVariantListModel.cpp
+    notifications/qtdnotificationsettings.cpp
     user/qtduser.cpp
     user/qtdlinkstate.cpp
     user/qtdlinkstatefactory.cpp
@@ -44,8 +61,9 @@ set(CMAKE_AUTOMOC ON)
 
 add_library(${QTDLIB} SHARED ${SRC})
 target_link_libraries(${QTDLIB} Qt5::Core Qt5::Quick Qt5::Qml Qt5::Concurrent Td::TdJsonStatic)
-set_property(TARGET ${QTDLIB} PROPERTY
-    INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(${QTDLIB} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+get_filename_component(QTDLIB_DIR ${CMAKE_CURRENT_SOURCE_DIR} DIRECTORY)
+set_property(TARGET ${QTDLIB} PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${QTDLIB_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
 
 execute_process(
     COMMAND dpkg-architecture -qDEB_HOST_MULTIARCH

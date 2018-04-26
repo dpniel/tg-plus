@@ -2,7 +2,7 @@
 #define AUTHMANAGER_H
 
 #include <QObject>
-#include <auth/qtdauthstate.h>
+#include <qtdlib/auth/qtdauthstate.h>
 #include "authparams.h"
 
 class AuthState : public QObject

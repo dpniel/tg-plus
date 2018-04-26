@@ -62,6 +62,10 @@ void QTdFile::unmarshalJson(const QJsonObject &json)
 
 void QTdFile::downloadFile()
 {
+    if (!m_local->canBeDownloaded()) {
+        qDebug() << "Cannot download file";
+        return;
+    }
     QTdDownloadFileRequest *req = new QTdDownloadFileRequest();
     req->setFileId(this->id());
     req->setPriority(QTdDownloadFileRequest::Priority::Medium);

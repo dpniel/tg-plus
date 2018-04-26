@@ -32,9 +32,6 @@ qint64 QTdInt53::value() const
     return _value;
 }
 
-
-
-
 QJsonValue QTdInt64::toJsonValue() const
 {
     return QJsonValue{QString::number(_value)};

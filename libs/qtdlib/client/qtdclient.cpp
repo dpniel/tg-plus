@@ -114,6 +114,20 @@ void QTdClient::handleRecv(const QJsonObject &data)
     } else if (type == "updateNewChat") {
         qDebug() << "Emitting updateNewChat";
         emit updateNewChat(data["chat"].toObject());
+    } else if (type == "updateBasicGroup") {
+        qDebug() << "Emitting updateBasicGroup";
+        emit updateBasicGroup(data["basic_group"].toObject());
+    } else if (type == "basicGroup") {
+        qDebug() << "Emitting basicGroup";
+        emit updateBasicGroup(data);
+    } else if (type == "secretChat") {
+        emit secretChat(data);
+    } else if (type == "updateSecretChat") {
+        emit updateSecretChat(data["secret_chat"].toObject());
+    } else if (type == "supergroup") {
+        emit superGroup(data);
+    } else if (type == "updateSupergroup") {
+        emit updateSuperGroup(data["supergroup"].toObject());
     }
 }
 
