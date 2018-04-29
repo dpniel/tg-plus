@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QSharedPointer>
 #include <td/telegram/td_json_client.h>
+#include <td/telegram/td_log.h>
 
 /**
  * @brief The Handle class
@@ -16,11 +17,8 @@ class Handle
 {
     void *m_handle;
 public:
-    explicit Handle(): m_handle(Q_NULLPTR) {
-        m_handle = td_json_client_create();
-    }
-
-    void *handle() { return m_handle; }
+    explicit Handle();
+    void *handle();
 };
 
 /**

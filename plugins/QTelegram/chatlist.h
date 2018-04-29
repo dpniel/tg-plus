@@ -22,7 +22,6 @@ public slots:
 
 private slots:
     void handleUpdateNewChat(const QJsonObject &chat);
-
     void handleAuthStateChanges(const QTdAuthState *state);
 
 private:

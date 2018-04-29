@@ -43,9 +43,10 @@ class QTdChat : public QAbstractInt64Id
     Q_PROPERTY(QTdNotificationSettings *notificationSettings READ notificationSettings NOTIFY notificationSettingsChanged)
     // TODO:
     // int64:reply_markup_message_id
-    // draftMessage:draf_message
+    // draftMessage:draf_message && updateChatDraftMessage
     // string:client_data
     Q_PROPERTY(QObject* messages READ messages NOTIFY messagesChanged)
+
 public:
     explicit QTdChat(QObject *parent = nullptr);
     void unmarshalJson(const QJsonObject &json);
@@ -136,6 +137,23 @@ public:
 
     QObject *messages() const;
 
+    /**
+     * @brief Open chat
+     *
+     * This method should be called if the chat is opened by the user.
+     * Many useful activities depend on the chat being opened or closed
+     * (e.g., in supergroups and channels all updates are received only for opened chats).
+     */
+    Q_INVOKABLE void openChat();
+
+    /**
+     * @brief Close chat
+     *
+     * This method should be called if the chat is closed by the user.
+     * Many useful activities depend on the chat being opened or closed
+     */
+    Q_INVOKABLE void closeChat();
+
 signals:
     void chatTypeChanged(QTdChatType *chatType);
     void titleChanged(QString title);
@@ -150,6 +168,17 @@ signals:
     void unreadMentionCountChanged();
     void notificationSettingsChanged();
     void messagesChanged();
+    void chatStatusChanged();
+
+public slots:
+    void updateChatOrder(const QJsonObject &json);
+    void updateChatReadInbox(const QJsonObject &json);
+    void updateChatReadOutbox(const QJsonObject &json);
+    void updateChatIsPinned(const QJsonObject &json);
+    void updateChatPhoto(const QJsonObject &photo);
+    void updateChatReplyMarkup(const QJsonObject &json);
+    void updateChatTitle(const QJsonObject &json);
+    void updateChatUnreadMentionCount(const QJsonObject &json);
 
 protected:
     QQmlObjectListModel<QTdMessage> *m_messages;

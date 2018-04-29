@@ -127,4 +127,5 @@ void QTdSuperGroupChat::updateSuperGroup(const QJsonObject &json)
     m_isVerified = json["is_verified"].toBool();
     m_restrictionReason = json["restriction_reason"].toString();
     emit superGroupChanged();
+    emit chatStatusChanged();
 }

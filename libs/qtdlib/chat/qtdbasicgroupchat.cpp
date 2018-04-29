@@ -103,4 +103,5 @@ void QTdBasicGroupChat::updateGroupData(const QJsonObject &json)
     m_isActive = json["is_active"].toBool();
     m_upgradedSGID = json["upgraded_to_supergroup_id"];
     emit groupChanged();
+    emit chatStatusChanged();
 }

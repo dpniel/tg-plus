@@ -7,6 +7,7 @@
 #include "qtdhandle.h"
 #include "auth/qtdauthstatefactory.h"
 #include "connections/qtdconnectionstatefactory.h"
+#include <functional>
 
 QJsonObject execTd(const QJsonObject &json) {
     qDebug() << "[EXEC]" << json;
@@ -30,6 +31,7 @@ QTdClient::QTdClient(QObject *parent) : QObject(parent),
     m_authState(Q_NULLPTR),
     m_connectionState(Q_NULLPTR)
 {
+    init();
     m_worker = new QThread(this);
     QTdWorker *w = new QTdWorker;
     w->moveToThread(m_worker);
@@ -93,70 +95,70 @@ QFuture<QJsonObject> QTdClient::exec(const QJsonObject &json)
 void QTdClient::handleRecv(const QJsonObject &data)
 {
     const QString type = data["@type"].toString();
+
     qDebug() << "-------------[ RCV ]-----------------------";
     qDebug() << "TYPE >> " << type;
     qDebug() << "DATA >> " << data;
     qDebug() << "-------------------------------------------";
-    if (type == "updateAuthorizationState") {
-        updateAuthState(data);
-    } else if (type == "updateConnectionState") {
-        updateConnectionState(data["state"].toObject());
-    } else if (type == "updateUser") {
-        qDebug() << "Emitting updateUser";
-        emit updateUser(data["user"].toObject());
-    } else if (type == "updateUserStatus") {
-        qDebug() << "Emitting updateUserStatus";
+    if (m_events.contains(type)) {
+        m_events.value(type)(data);
+    } else {
+        qDebug() << "---------[UNHANDLED]-------------";
+        qDebug() << type;
+        qDebug() << "---------------------------------";
+    }
+}
+
+void QTdClient::init()
+{
+    m_events.insert("updateAuthorizationState", [=](const QJsonObject &data) {
+        QTdAuthState *state = QTdAuthStateFactory::create(data, this);
+        if (!state) {
+            qDebug() << "Unknown auth state: " << data;
+            return;
+        }
+        if (!m_authState || (state->type() != m_authState->type())) {
+            if (m_authState) {
+                delete m_authState;
+                m_authState = 0;
+            }
+            m_authState = state;
+            emit authStateChanged(m_authState);
+        }
+    });
+
+    m_events.insert("updateConnectionState", [=](const QJsonObject &data) {
+        qDebug() << "[ConnectionStateChanged] >> " << data;
+        if (m_connectionState) {
+            delete m_connectionState;
+            m_connectionState = 0;
+        }
+        m_connectionState = QTdConnectionStateFactory::create(data, this);
+        emit connectionStateChanged(m_connectionState);
+    });
+
+    m_events.insert("updateUser", [=](const QJsonObject &data){ emit updateUser(data["user"].toObject()); });
+    m_events.insert("updateUserStatus", [=](const QJsonObject &data){
         const QString userId = QString::number(qint32(data["user_id"].toInt()));
         emit updateUserStatus(userId, data["status"].toObject());
-    } else if (type == "updateFile") {
-        qDebug() << "Emitting updateFile";
-        emit updateFile(data["file"].toObject());
-    } else if (type == "updateNewChat") {
-        qDebug() << "Emitting updateNewChat";
-        emit updateNewChat(data["chat"].toObject());
-    } else if (type == "updateBasicGroup") {
-        qDebug() << "Emitting updateBasicGroup";
-        emit updateBasicGroup(data["basic_group"].toObject());
-    } else if (type == "basicGroup") {
-        qDebug() << "Emitting basicGroup";
-        emit updateBasicGroup(data);
-    } else if (type == "secretChat") {
-        emit secretChat(data);
-    } else if (type == "updateSecretChat") {
-        emit updateSecretChat(data["secret_chat"].toObject());
-    } else if (type == "supergroup") {
-        emit superGroup(data);
-    } else if (type == "updateSupergroup") {
-        emit updateSuperGroup(data["supergroup"].toObject());
-    }
-}
-
-void QTdClient::updateAuthState(const QJsonObject &data)
-{
-    QTdAuthState *state = QTdAuthStateFactory::create(data, this);
-    if (!state) {
-        qDebug() << "Unknown auth state: " << data;
-        return;
-    }
-    if (!m_authState || (state->type() != m_authState->type())) {
-        if (m_authState) {
-            delete m_authState;
-            m_authState = 0;
-        }
-        m_authState = state;
-        emit authStateChanged(m_authState);
-    }
-}
-
-void QTdClient::updateConnectionState(const QJsonObject &data)
-{
-    qDebug() << "[ConnectionStateChanged] >> " << data;
-    if (m_connectionState) {
-        delete m_connectionState;
-        m_connectionState = 0;
-    }
-    m_connectionState = QTdConnectionStateFactory::create(data, this);
-    emit connectionStateChanged(m_connectionState);
+    });
+    m_events.insert("updateFile", [=](const QJsonObject &data){ emit updateFile(data["file"].toObject()); });
+    m_events.insert("updateNewChat", [=](const QJsonObject &data){ emit updateNewChat(data["chat"].toObject()); });
+    m_events.insert("updateBasicGroup", [=](const QJsonObject &data){ emit updateBasicGroup(data["basic_group"].toObject()); });
+    m_events.insert("basicGroup", [=](const QJsonObject &data){ emit updateBasicGroup(data); });
+    m_events.insert("secretChat", [=](const QJsonObject &data){ emit secretChat(data); });
+    m_events.insert("updateSecretChat", [=](const QJsonObject &data){ emit updateSecretChat(data["secret_chat"].toObject()); });
+    m_events.insert("supergroup", [=](const QJsonObject &data){ emit superGroup(data); });
+    m_events.insert("updateSupergroup", [=](const QJsonObject &data){ emit updateSuperGroup(data["supergroup"].toObject()); });
+    m_events.insert("updateChatOrder", [=](const QJsonObject &data){ emit updateChatOrder(data); });
+    m_events.insert("updateChatLastMessage", [=](const QJsonObject &data){ emit updateChatLastMessage(data); });
+    m_events.insert("updateChatReadInbox", [=](const QJsonObject &data){ emit updateChatReadInbox(data); });
+    m_events.insert("updateChatIsPinned", [=](const QJsonObject &data){ emit updateChatIsPinned(data); });
+    m_events.insert("updateChatPhoto", [=](const QJsonObject &data){ emit updateChatPhoto(data); });
+    m_events.insert("updateChatReadOutbox", [=](const QJsonObject &data){ emit updateChatReadOutbox(data); });
+    m_events.insert("updateChatReplyMarkup", [=](const QJsonObject &data){ emit updateChatReplyMarkup(data); });
+    m_events.insert("updateChatTitle", [=](const QJsonObject &data){ emit updateChatTitle(data); });
+    m_events.insert("updateChatUnreadMentionCount", [=](const QJsonObject &data){ emit updateChatUnreadMentionCount(data); });
 }
 
 

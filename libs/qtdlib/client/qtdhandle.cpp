@@ -18,3 +18,10 @@ QSharedPointer<Handle> QTdHandle::instance()
     }
     return s_handle.toStrongRef();
 }
+
+Handle::Handle(): m_handle(Q_NULLPTR) {
+    m_handle = td_json_client_create();
+    td_set_log_verbosity_level(2);
+}
+
+void *Handle::handle() { return m_handle; }

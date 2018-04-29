@@ -1,14 +1,19 @@
 #ifndef QTDCLIENT_H
 #define QTDCLIENT_H
 
+#include <functional>
 #include <QObject>
 #include <QSharedPointer>
+#include <QHash>
 #include <QFuture>
 #include <QThread>
 #include <QJsonObject>
 #include "auth/qtdauthstate.h"
 #include "connections/qtdconnectionstate.h"
 #include "common/qtdrequest.h"
+
+// callback to trigger on received messages from tdlib.
+typedef std::function<void(QJsonObject)> ReceiveCallback;
 
 /**
  * @brief The QTdClient class
@@ -67,21 +72,29 @@ signals:
     void updateUserStatus(QString user_id, QJsonObject status);
     void updateFile(QJsonObject file);
     void updateNewChat(QJsonObject chat);
+    void updateChatOrder(QJsonObject chat);
+    void updateChatLastMessage(QJsonObject chat);
     void updateBasicGroup(QJsonObject group);
     void secretChat(QJsonObject chat);
     void updateSecretChat(QJsonObject chat);
     void superGroup(QJsonObject group);
     void updateSuperGroup(QJsonObject group);
+    void updateChatReadInbox(QJsonObject chat);
+    void updateChatReadOutbox(QJsonObject chat);
+    void updateChatIsPinned(QJsonObject chat);
+    void updateChatPhoto(QJsonObject photo);
+    void updateChatReplyMarkup(QJsonObject chat);
+    void updateChatTitle(QJsonObject chat);
+    void updateChatUnreadMentionCount(QJsonObject chat);
 
 private slots:
     void handleRecv(const QJsonObject &data);
 private:
-    void updateAuthState(const QJsonObject &data);
-    void updateConnectionState(const QJsonObject &data);
-
+    void init();
     QThread *m_worker;
     QTdAuthState *m_authState;
     QTdConnectionState *m_connectionState;
+    QHash<QString, ReceiveCallback> m_events;
 };
 
 #endif // QTDCLIENT_H

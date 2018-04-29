@@ -10,18 +10,28 @@ Page {
         title: "Chat List"
     }
     ListView {
-        anchors.fill: parent
-        model: Telegram.chats.list
+        anchors{
+            topMargin:units.gu(7)
+            fill: parent
+        }
+        model: Telegram.chats.sortedList
         delegate: ListItem {
             height: layout.implicitHeight
-            property QTdChat chat: model.qtObject
+            readonly property QTdChat chat: modelData
+            // We need to explicitly open the chat
+            // on click and then close again on pop.
+            // Todo: move this to the flux api
+            onClicked: chat.openChat()
             ListItemLayout {
                 id: layout
-                title.text: chat.title
+                title.text: chat.isPinned ? chat.title + " (pinned)" : chat.title
+                subtitle.text: chat.lastMessage ? Qt.formatDateTime(chat.lastMessage.date) : ""
                 summary.text: {
                     switch (chat.chatType.type) {
                     case QTdChatType.CHAT_TYPE_BASIC_GROUP:
                     case QTdChatType.CHAT_TYPE_SUPERGROUP:
+                        // TODO: why are supergroup members counts
+                        // always 0??
                         return "Members: " + chat.memberCount
                     default:
                         return ""
@@ -31,7 +41,7 @@ Page {
                     height: units.gu(5)
                     width: height
                     source: Image {
-                        source: Qt.resolvedUrl("file://" + chat.chatPhoto.small.local.path)
+                        source: chat.chatPhoto.small.local.path ? Qt.resolvedUrl("file://" + chat.chatPhoto.small.local.path) : ""
                     }
                     SlotsLayout.position: SlotsLayout.Leading
                 }

@@ -8,7 +8,8 @@ AuthParams::AuthParams(QObject *parent) : QAbstractTdObject(parent),
     m_useChatInfoDatabase(true),
     m_useMessageDatabase(true),
     m_useSecretChats(true),
-    m_useStorageOptimizer(true)
+    m_useStorageOptimizer(true),
+    m_apiID(0)
 {
     m_systemLanguageCode = QStringLiteral("en");
     m_deviceModel = QStringLiteral("Ubuntu Phone");

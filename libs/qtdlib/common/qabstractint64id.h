@@ -15,7 +15,7 @@ class QAbstractInt64Id : public QAbstractTdObject
 public:
     explicit QAbstractInt64Id(QObject *parent = nullptr);
 
-    qint32 id() const;
+    qint64 id() const;
     QString qmlId() const;
 
     // QAbstractTdObject interface

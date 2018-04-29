@@ -2,6 +2,7 @@
 #define QTDINT_H
 
 #include <QJsonValue>
+#include <QDebug>
 
 class QTdInt32
 {
@@ -64,7 +65,12 @@ public:
     }
 
     void operator=(const QJsonValue &v) {
-        _value = qint64(v.toString().toLongLong());
+        QVariant res = v.toVariant();
+        bool ok = false;
+        _value = res.toLongLong(&ok);
+        if (!ok) {
+            qWarning() << "Failed parsing qint64 from json value";
+        }
     }
 
     void operator=(const QString &v) {

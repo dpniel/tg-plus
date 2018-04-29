@@ -1,12 +1,12 @@
 #include "qabstractint64id.h"
+#include <QDebug>
 
-
-QAbstractInt64Id::QAbstractInt64Id(QObject *parent): QAbstractTdObject(parent)
+QAbstractInt64Id::QAbstractInt64Id(QObject *parent): QAbstractTdObject(parent),
+    m_id(0)
 {
-
 }
 
-qint32 QAbstractInt64Id::id() const
+qint64 QAbstractInt64Id::id() const
 {
     return m_id.value();
 }
@@ -18,9 +18,8 @@ QString QAbstractInt64Id::qmlId() const
 
 void QAbstractInt64Id::unmarshalJson(const QJsonObject &json)
 {
-    if (json.contains("id")) {
-        m_id = json["id"];
-    }
+    m_id = json["id"];
+    emit idChanged(m_id.value());
     QAbstractTdObject::unmarshalJson(json);
 }
 

@@ -26,6 +26,11 @@ void QTdUser::unmarshalJson(const QJsonObject &json)
     emit restrictionReasonChanged(m_restrictionReason);
     m_languageCode = json["language_code"].toString();
     emit languageCodeChanged(m_languageCode);
+
+    if (m_userType) {
+        delete m_userType;
+        m_userType = 0;
+    }
     const QJsonObject typeObj = json["type"].toObject();
     const QString type = typeObj["@type"].toString();
     if (type == "userTypeRegular") {
@@ -148,6 +153,10 @@ void QTdUser::setPhoneNumber(QString phoneNumber)
 
 void QTdUser::setStatus(QTdUserStatus *status)
 {
+    if (m_status) {
+        delete m_status;
+        m_status = 0;
+    }
     m_status = status;
     emit statusChanged(m_status);
 }

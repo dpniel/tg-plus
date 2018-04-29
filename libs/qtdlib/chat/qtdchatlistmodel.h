@@ -17,14 +17,21 @@ public:
 
 signals:
     void modelChanged(QObject* model);
-
-public slots:
+    void contentsChanged();
+    void chatStatusChanged();
 
 private slots:
     void handleUpdateNewChat(const QJsonObject &chat);
-
+    void handleUpdateChatOrder(const QJsonObject &json);
+    void handleUpdateChatLastMessage(const QJsonObject chat);
     void handleAuthStateChanges(const QTdAuthState *state);
-
+    void updateChatReadInbox(const QJsonObject &json);
+    void updateChatReadOutbox(const QJsonObject &json);
+    void handleUpdateChatIsPinned(const QJsonObject &json);
+    void handleUpdateChatPhoto(const QJsonObject &chat);
+    void handleUpdateChatReplyMarkup(const QJsonObject &chat);
+    void handleUpdateChatTitle(const QJsonObject &chat);
+    void handleUpdateChatUnreadMentionCount(const QJsonObject &chat);
 private:
     QQmlObjectListModel<QTdChat> *m_model;
 };

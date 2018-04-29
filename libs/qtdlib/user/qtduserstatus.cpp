@@ -31,7 +31,7 @@ QDateTime QTdUserStatusOffline::wasOnline() const
 
 void QTdUserStatusOffline::unmarshalJson(const QJsonObject &json)
 {
-    m_wasOnline.setTime_t(json["was_online"].toInt());
+    m_wasOnline.setTime_t(qint32(json["was_online"].toInt()));
     emit wasOnlineChanged(m_wasOnline);
     QAbstractTdObject::unmarshalJson(json);
 }
@@ -48,7 +48,7 @@ QDateTime QTdUserStatusOnline::expires() const
 
 void QTdUserStatusOnline::unmarshalJson(const QJsonObject &json)
 {
-    m_expires.setTime_t(json["expires"].toInt());
+    m_expires.setTime_t(qint32(json["expires"].toInt()));
     emit expiresChanged();
     QAbstractTdObject::unmarshalJson(json);
 }

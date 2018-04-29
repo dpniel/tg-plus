@@ -5,10 +5,11 @@
 #include "qtelegram.h"
 #include "authmanager.h"
 #include "users.h"
-#include "chatlist.h"
 
 #include <qtdlib/auth/qtdauthstate.h>
 #include <qtdlib/chat/qtdchat.h>
+#include <qtdlib/chat/qtdchatlistmodel.h>
+#include <qtdlib/chat/qtdchatlistsortfiltermodel.h>
 #include <qtdlib/connections/qtdconnectionstate.h>
 #include <qtdlib/user/qtduser.h>
 #include <qtdlib/files/qtdfile.h>
@@ -19,7 +20,8 @@ void QTelegramPlugin::registerTypes(const char *uri) {
     qmlRegisterType<AuthState>(uri, 1, 0, "AuthState");
     qmlRegisterType<AuthParams>(uri, 1, 0, "AuthParams");
     qmlRegisterType<Users>(uri, 1, 0, "Users");
-    qmlRegisterType<ChatList>(uri, 1, 0, "ChatList");
+    qmlRegisterType<QTdChatListModel>(uri, 1, 0, "ChatList");
+    qmlRegisterType<QTdChatListSortFilterModel>(uri, 1, 0, "SortedChatList");
 
     // qtdlib common
     qmlRegisterUncreatableType<QAbstractTdObject>(uri, 1, 0, "QTdObject", "Base TD c++ class");

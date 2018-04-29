@@ -1,6 +1,9 @@
 #include "qtdchat.h"
 #include <QDebug>
 #include "qtdchattypefactory.h"
+#include "client/qtdclient.h"
+#include "chat/requests/qtdopenchatrequest.h"
+#include "chat/requests/qtdclosechatrequest.h"
 
 
 QTdChat::QTdChat(QObject *parent) : QAbstractInt64Id(parent),
@@ -17,8 +20,7 @@ QTdChat::QTdChat(QObject *parent) : QAbstractInt64Id(parent),
 
 void QTdChat::unmarshalJson(const QJsonObject &json)
 {
-    m_title = json["title"].toString();
-    emit titleChanged(m_title);
+    updateChatTitle(json);
 
     if (m_chatType) {
         delete m_chatType;
@@ -27,18 +29,7 @@ void QTdChat::unmarshalJson(const QJsonObject &json)
     m_chatType = QTdChatFactory::createType(json["type"].toObject(), this);
     emit chatTypeChanged(m_chatType);
 
-    if (m_chatPhoto) {
-        delete m_chatPhoto;
-        m_chatPhoto = 0;
-    }
-
-    m_chatPhoto = new QTdChatPhoto(this);
-    m_chatPhoto->unmarshalJson(json["photo"].toObject());
-    emit chatPhotoChanged(m_chatPhoto);
-
-    if (m_chatPhoto->small()->local()->path().isEmpty()) {
-        m_chatPhoto->small()->downloadFile();
-    }
+    updateChatPhoto(json["photo"].toObject());
 
     if (m_lastMessage) {
         delete m_lastMessage;
@@ -48,26 +39,17 @@ void QTdChat::unmarshalJson(const QJsonObject &json)
     m_lastMessage->unmarshalJson(json["last_message"].toObject());
     emit lastMessageChanged(m_lastMessage);
 
-    m_order = json["order"];
-    emit orderChanged();
-
-    m_isPinned = json["is_pinned"].toBool();
-    emit isPinnedChanged();
+    updateChatOrder(json);
+    updateChatIsPinned(json);
 
     m_canBeReported = json["can_be_reported"].toBool();
     emit canBeReportedChanged();
 
-    m_unreadCount = json["unread_count"];
-    emit unreadCountChanged();
+    updateChatReadInbox(json);
 
-    m_lastReadInboxMsg = json["last_read_inbox_message_id"];
-    emit lastReadInboxMessageIdChanged();
+    updateChatReadOutbox(json);
 
-    m_lastReadOutboxMsg = json["last_read_outbox_message_id"];
-    emit lastReadOutboxMessageIdChanged();
-
-    m_unreadMentionCount = json["unread_mention_count"];
-    emit unreadMentionCountChanged();
+    updateChatUnreadMentionCount(json);
 
     if (m_notifySettings) {
         delete m_notifySettings;
@@ -168,6 +150,83 @@ qint32 QTdChat::unreadMentionCount() const
 QTdNotificationSettings *QTdChat::notificationSettings() const
 {
     return m_notifySettings;
+}
+
+void QTdChat::openChat()
+{
+    auto *req = new QTdOpenChatRequest;
+    req->setChatId(id());
+    QTdClient::instance()->send(req);
+}
+
+void QTdChat::closeChat()
+{
+    auto *req = new QTdCloseChatRequest;
+    req->setChatId(id());
+    QTdClient::instance()->send(req);
+}
+
+void QTdChat::updateChatOrder(const QJsonObject &json)
+{
+    m_order = json["order"];
+    emit orderChanged();
+}
+
+void QTdChat::updateChatReadInbox(const QJsonObject &json)
+{
+    m_unreadCount = json["unread_count"];
+    emit unreadCountChanged();
+
+    m_lastReadInboxMsg = json["last_read_inbox_message_id"];
+    emit lastReadInboxMessageIdChanged();
+}
+
+void QTdChat::updateChatReadOutbox(const QJsonObject &json)
+{
+    m_lastReadOutboxMsg = json["last_read_outbox_message_id"];
+    emit lastReadOutboxMessageIdChanged();
+}
+
+void QTdChat::updateChatIsPinned(const QJsonObject &json)
+{
+    m_isPinned = json["is_pinned"].toBool();
+    emit isPinnedChanged();
+    updateChatOrder(json);
+}
+
+void QTdChat::updateChatPhoto(const QJsonObject &photo)
+{
+    if (m_chatPhoto) {
+        delete m_chatPhoto;
+        m_chatPhoto = 0;
+    }
+
+    m_chatPhoto = new QTdChatPhoto(this);
+    m_chatPhoto->unmarshalJson(photo);
+    emit chatPhotoChanged(m_chatPhoto);
+
+    if (m_chatPhoto->small()->local()->path().isEmpty()) {
+        m_chatPhoto->small()->downloadFile();
+    }
+}
+
+void QTdChat::updateChatReplyMarkup(const QJsonObject &json)
+{
+    https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_reply_markup.html
+    Q_UNUSED(json);
+    qWarning() << __func__ << "NOT IMPLEMENTED";
+}
+
+void QTdChat::updateChatTitle(const QJsonObject &json)
+{
+    m_title = json["title"].toString();
+    emit titleChanged(m_title);
+}
+
+void QTdChat::updateChatUnreadMentionCount(const QJsonObject &json)
+{
+    m_unreadMentionCount = json["unread_mention_count"];
+    emit unreadMentionCountChanged();
 }
 
 QTdChatType *QTdChat::chatType() const
