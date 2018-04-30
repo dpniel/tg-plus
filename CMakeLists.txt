@@ -64,7 +64,6 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE_NAME} DESTINATION ${DAT
 
 add_subdirectory(po)
 add_subdirectory(libs)
-add_subdirectory(plugins)
 add_subdirectory(app)
 
 # Make source files visible in qtcreator
