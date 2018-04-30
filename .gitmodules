@@ -1,0 +1,3 @@
+[submodule "libs/qtdlib"]
+	path = libs/qtdlib
+	url = https://github.com/dpniel/qtdlib.git

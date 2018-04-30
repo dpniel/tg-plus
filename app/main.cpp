@@ -3,6 +3,7 @@
 #include <QJsonObject>
 #include <QDebug>
 #include <QuickFlux>
+#include <qtdlib/quick/plugin.h>
 
 int main(int argc, char *argv[])
 {
@@ -13,6 +14,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationVersion(QStringLiteral("0.0.1"));
 
     registerQuickFluxQmlTypes();
+    QTdLib::registerQmlTypes();
 
     QQmlApplicationEngine engine;
     engine.addImportPath(QStringLiteral("qrc:/imports"));
