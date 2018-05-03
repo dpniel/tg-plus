@@ -1,4 +1,8 @@
 {
   "template": "cmake",
-  "kill": "qmlscene"
+  "kill": "qmlscene",
+  "dependencies": [
+    "gperf",
+    "libssl-dev"
+  ]
 }

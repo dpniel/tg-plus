@@ -21,22 +21,16 @@ Page {
             // We need to explicitly open the chat
             // on click and then close again on pop.
             // Todo: move this to the flux api
-            onClicked: chat.openChat()
+//            onClicked: chat.openChat()
+            // TODO: Move to a context action
+//            onClicked: chat.isPinned ? chat.unpinChat() : chat.pinChat()
             ListItemLayout {
                 id: layout
                 title.text: chat.isPinned ? chat.title + " (pinned)" : chat.title
-                subtitle.text: chat.lastMessage ? Qt.formatDateTime(chat.lastMessage.date) : ""
-                summary.text: {
-                    switch (chat.chatType.type) {
-                    case QTdChatType.CHAT_TYPE_BASIC_GROUP:
-                    case QTdChatType.CHAT_TYPE_SUPERGROUP:
-                        // TODO: why are supergroup members counts
-                        // always 0??
-                        return "Members: " + chat.memberCount
-                    default:
-                        return ""
-                    }
-                }
+                // TODO: This should just be a `chat.lastMessage.summary` property that returns a correctly formatted
+                // string representation of lastMessage
+                subtitle.text: (chat.lastMessage && chat.lastMessage.sender) ? chat.lastMessage.sender.firstName : ""
+                summary.text: chat.lastMessage ? Qt.formatDateTime(chat.lastMessage.date) : ""
                 UbuntuShape {
                     height: units.gu(5)
                     width: height
