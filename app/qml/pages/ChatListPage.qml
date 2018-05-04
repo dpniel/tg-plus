@@ -27,10 +27,19 @@ Page {
             ListItemLayout {
                 id: layout
                 title.text: chat.isPinned ? chat.title + " (pinned)" : chat.title
-                // TODO: This should just be a `chat.lastMessage.summary` property that returns a correctly formatted
-                // string representation of lastMessage
-                subtitle.text: (chat.lastMessage && chat.lastMessage.sender) ? chat.lastMessage.sender.firstName : ""
-                summary.text: chat.lastMessage ? Qt.formatDateTime(chat.lastMessage.date) : ""
+                subtitle.text: chat.summary
+//                summary.text: chat.lastMessage ? Qt.formatDateTime(chat.lastMessage.date) : ""
+                summary.text: {
+                    switch (chat.chatType.type) {
+                    case QTdChatType.CHAT_TYPE_BASIC_GROUP:
+                    case QTdChatType.CHAT_TYPE_SUPERGROUP:
+                        // TODO: why are supergroup members counts
+                        // always 0??
+                        return "Members: " + chat.memberCount
+                    default:
+                        return ""
+                    }
+                }
                 UbuntuShape {
                     height: units.gu(5)
                     width: height
