@@ -1,11 +1,13 @@
 import QtQuick 2.4
 import QtQuick.Window 2.3
-import Ubuntu.Components 1.3
+import QtQuick.Controls 2.2
+import QtQuick.Controls.Suru 2.2
 import QuickFlux 1.1
 import QTelegram 1.0
 import "./stores"
 
-Window {
+ApplicationWindow {
+    Suru.theme: Suru.Dark
     /**
      * Only show the window once we have reached a state
      * that has something to display.
@@ -14,33 +16,29 @@ Window {
      * state???
      */
     visible: Telegram.auth.state > AuthState.WaitEncryptionKey
-    width: units.gu(45)
-    height: units.gu(75)
+    width: Suru.units.gu(45)
+    height: Suru.units.gu(75)
 
-    MainView {
-        id: root
+    StackView {
+        id: pageStack
         anchors.fill: parent
-        visible: true
-        PageStack {
-            id: pageStack
+    }
 
-        }
-        AppListener {
-            Filter {
-                type: "pushToStack"
-                onDispatched: {
-                    pageStack.push(message.view)
-                }
+    AppListener {
+        Filter {
+            type: "pushToStack"
+            onDispatched: {
+                pageStack.push(message.view)
             }
+        }
 
-            Filter {
-                type: "replaceOnStack"
-                onDispatched: {
-                    if (pageStack.depth) {
-                        pageStack.clear()
-                    }
-                    pageStack.push(message.view)
+        Filter {
+            type: "replaceOnStack"
+            onDispatched: {
+                if (pageStack.depth) {
+                    pageStack.clear()
                 }
+                pageStack.push(message.view)
             }
         }
     }

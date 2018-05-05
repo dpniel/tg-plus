@@ -16,8 +16,10 @@ Store {
      * If you want a sorted list use SortedChatList below.
      */
     property alias list: chatList.model
+    property alias currentChat: chatList.currentChat
     ChatList {
         id: chatList
+        onCurrentChatChanged: console.log("CURRENT CHAT CHANGED")
     }
 
     /**
@@ -47,5 +49,36 @@ Store {
         id: sortedChatList
         model: chatList
         chatFilters: SortedChatList.CurrentChats
+    }
+
+    /**
+     *
+     */
+    property alias messageList: messageList.model
+    MessageList {
+        id: messageList
+        chat: chatList.currentChat
+    }
+
+    Filter {
+        type: ChatKey.setCurrentChat
+        onDispatched: {
+            if (message.chat) {
+                if (chatList.currentChat  && message.chat.id !== chatList.currentChat.id) {
+                    return
+                }
+                chatList.currentChat = message.chat
+            }
+        }
+    }
+
+    Filter {
+        type: ChatKey.closeCurrentChat
+        onDispatched: {
+            if (chatList.currentChat) {
+                chatList.currentChat.closeChat()
+                chatList.clearCurrentChat()
+            }
+        }
     }
 }

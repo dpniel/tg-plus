@@ -7,6 +7,7 @@ find_package(Qt5Core)
 find_package(Qt5Qml)
 find_package(Qt5Quick)
 find_package(Qt5Concurrent)
+find_package(Qt5QuickControls2)
 
 # Automatically create moc files
 set(CMAKE_INCLUDE_CURRENT_DIR ON)

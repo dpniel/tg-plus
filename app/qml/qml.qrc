@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>Main.qml</file>
-        <file>states/TelegramStateMachine.qml</file>
         <file>pages/WaitPhoneNumberPage.qml</file>
         <file>stores/AuthStateStore.qml</file>
         <file>stores/qmldir</file>
@@ -14,5 +13,9 @@
         <file>pages/ChatListPage.qml</file>
         <file>stores/UsersStateStore.qml</file>
         <file>stores/ChatStateStore.qml</file>
+        <file>pages/MessageListPage.qml</file>
+        <file>actions/AppActions.qml</file>
+        <file>actions/ChatActions.qml</file>
+        <file>actions/ChatKey.qml</file>
     </qresource>
 </RCC>

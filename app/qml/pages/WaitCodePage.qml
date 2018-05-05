@@ -20,6 +20,6 @@ Page {
             topMargin: units.gu(1)
             horizontalCenter: parent.horizontalCenter
         }
-        onClicked: AuthAction.setCode(codeField.text)
+        onClicked: AppActions.auth.setCode(codeField.text)
     }
 }
