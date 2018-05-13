@@ -81,4 +81,27 @@ Store {
             }
         }
     }
+
+    Filter {
+        type: ChatKey.loadMoreMessages
+        onDispatched: {
+            if (d.canLoadMoreMessages) {
+                messageList.loadMore()
+                d.canLoadMoreMessages = false
+                enableLoadTimer.start()
+            }
+        }
+    }
+
+    Timer {
+        id: enableLoadTimer
+        interval: 1000
+        triggeredOnStart: false
+        onTriggered: d.canLoadMoreMessages = true
+    }
+
+    QtObject {
+        id: d
+        property bool canLoadMoreMessages: true
+    }
 }

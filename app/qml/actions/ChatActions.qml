@@ -5,4 +5,6 @@ import "./"
 ActionCreator {
     signal setCurrentChat(var chat)
     signal closeCurrentChat()
+
+    signal loadMoreMessages();
 }
