@@ -2,9 +2,11 @@
 #include <QQmlApplicationEngine>
 #include <QJsonObject>
 #include <QDebug>
+#include <QQmlContext>
 #include <QuickFlux>
 #include <qtdlib/quick/plugin.h>
 #include <QtQuickControls2/QQuickStyle>
+#include "messagedelegatemap.h"
 
 int main(int argc, char *argv[])
 {
@@ -19,8 +21,12 @@ int main(int argc, char *argv[])
     registerQuickFluxQmlTypes();
     QTdLib::registerQmlTypes();
 
+    MessageDelegateMap delegateMap;
+
     QQmlApplicationEngine engine;
     engine.addImportPath(QStringLiteral("qrc:/imports"));
+    engine.rootContext()->setContextProperty(QStringLiteral("delegateMap"), &delegateMap);
+
     engine.load("qrc:/Main.qml");
 
     return app.exec();

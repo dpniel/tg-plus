@@ -1,4 +1,4 @@
-import QtQuick 2.4
+import QtQuick 2.9
 import QtQuick.Window 2.3
 import QtQuick.Controls 2.2
 import QtQuick.Controls.Suru 2.2
@@ -8,6 +8,7 @@ import "./stores"
 
 ApplicationWindow {
     Suru.theme: Suru.Dark
+
     /**
      * Only show the window once we have reached a state
      * that has something to display.

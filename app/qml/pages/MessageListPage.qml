@@ -4,6 +4,7 @@ import QtQuick.Controls.Suru 2.2
 import Ubuntu.Components 1.3 as UITK
 import QTelegram 1.0
 import "../actions"
+import "../delegates"
 import "../stores"
 
 Page {
@@ -36,16 +37,12 @@ Page {
             anchors.fill: parent
             model: Telegram.chats.messageList
             verticalLayoutDirection: ListView.BottomToTop
-            delegate: ItemDelegate {
-                property QTdMessage message: modelData
-                height: layout.implicitHeight
-                width: msgList.width
-                UITK.ListItemLayout {
-                    id: layout
-                    title.text: message.summary
-                    title.color: Suru.foregroundColor
-                    summary.text: message.content.text.text
-                    summary.color: Suru.foregroundColor
+            delegate: Component {
+                Loader {
+                    id: loader
+                    width: parent.width
+                    height: childrenRect.height
+                    Component.onCompleted: setSource(delegateMap.findComponent(modelData.content.type), {message: modelData})
                 }
             }
         }

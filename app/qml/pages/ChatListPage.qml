@@ -38,10 +38,6 @@ Page {
                     pageStack.push("qrc:///pages/MessageListPage.qml")
                 }
 
-                // We need to explicitly open the chat
-                // on click and then close again on pop.
-                // Todo: move this to the flux api
-                //            onClicked: chat.openChat()
                 // TODO: Move to a context action
                 //            onClicked: chat.isPinned ? chat.unpinChat() : chat.pinChat()
                 UITK.ListItemLayout {
@@ -68,6 +64,7 @@ Page {
                         height: Suru.units.gu(5)
                         width: height
                         source: Image {
+                            asynchronous: true
                             source: chat.chatPhoto.small.local.path ? Qt.resolvedUrl("file://" + chat.chatPhoto.small.local.path) : ""
                         }
                         UITK.SlotsLayout.position: UITK.SlotsLayout.Leading

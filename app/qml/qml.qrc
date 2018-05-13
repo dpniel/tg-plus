@@ -17,5 +17,11 @@
         <file>actions/AppActions.qml</file>
         <file>actions/ChatActions.qml</file>
         <file>actions/ChatKey.qml</file>
+        <file>delegates/MessageItemBase.qml</file>
+        <file>components/ProfilePhoto.qml</file>
+        <file>delegates/MessageTextItem.qml</file>
+        <file>stores/ViewStore.qml</file>
+        <file>delegates/NotImplementedYet.qml</file>
+        <file>components/WebPagePreview.qml</file>
     </qresource>
 </RCC>
