@@ -38,8 +38,6 @@ Page {
                     pageStack.push("qrc:///pages/MessageListPage.qml")
                 }
 
-                // TODO: Move to a context action
-                //            onClicked: chat.isPinned ? chat.unpinChat() : chat.pinChat()
                 UITK.ListItemLayout {
                     id: layout
                     title.text: chat.isPinned ? chat.title + " (pinned)" : chat.title
@@ -47,18 +45,7 @@ Page {
                     subtitle.text: chat.summary
                     subtitle.color: Suru.foregroundColor
                     summary.color: Suru.foregroundColor
-                    //                summary.text: chat.lastMessage ? Qt.formatDateTime(chat.lastMessage.date) : ""
-                    summary.text: {
-                        switch (chat.chatType.type) {
-                        case QTdChatType.CHAT_TYPE_BASIC_GROUP:
-                        case QTdChatType.CHAT_TYPE_SUPERGROUP:
-                            // TODO: why are supergroup members counts
-                            // always 0??
-                            return "Members: " + chat.memberCount
-                        default:
-                            return ""
-                        }
-                    }
+
                     UITK.UbuntuShape {
                         aspect: UITK.UbuntuShape.Flat
                         height: Suru.units.gu(5)

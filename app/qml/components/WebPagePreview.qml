@@ -56,7 +56,7 @@ Item {
             aspect: UITK.UbuntuShape.Flat
             source: Image {
                 asynchronous: true
-                source: preview ? Qt.resolvedUrl("file://" + preview.photo.sizes.getFirst().photo.local.path) : ""
+                source: preview && preview.photo.sizes.count ? Qt.resolvedUrl("file://" + preview.photo.sizes.getFirst().photo.local.path) : ""
             }
             Layout.alignment: Qt.AlignTop
 

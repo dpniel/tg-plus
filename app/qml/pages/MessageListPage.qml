@@ -32,24 +32,30 @@ Page {
     }
 
     ScrollView {
-        anchors {
-            left: parent.left
-            top: parent.top
-            right: parent.right
-            bottom: input.top
-        }
+        anchors.fill: parent
 
         ListView {
             id: msgList
             anchors.fill: parent
             model: Telegram.chats.messageList
             verticalLayoutDirection: ListView.BottomToTop
-            delegate: Component {
-                Loader {
-                    id: loader
-                    width: parent.width
-                    height: childrenRect.height
-                    Component.onCompleted: setSource(delegateMap.findComponent(modelData.content.type), {message: modelData})
+            delegate: Item {
+                id: messageDelegate
+                width: parent.width
+                height: childrenRect.height
+
+                /**
+                 * Instead of using a Loader and creating a new
+                 * context which brings in alot of overhead for
+                 * each delegate we just create the component
+                 * manually.
+                 */
+                Component.onCompleted: {
+                    var comp = Qt.createComponent(
+                        delegateMap.findComponent(modelData.content.type),
+                        messageDelegate
+                    )
+                    comp.createObject(messageDelegate, {message: modelData})
                 }
             }
 
@@ -68,15 +74,12 @@ Page {
         }
     }
 
-    Rectangle {
+    footer: Rectangle {
         id: input
-        anchors {
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-        }
+        width: parent.width
         height: entry.height + Suru.units.gu(2)
         color: Suru.backgroundColor
+
         Rectangle {
             anchors {
                 top: parent.top
@@ -90,6 +93,7 @@ Page {
         RowLayout {
             anchors.fill: parent
             anchors.margins: Suru.units.gu(1)
+
             Item {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
@@ -101,7 +105,6 @@ Page {
                         left: parent.left
                         right: parent.right
                     }
-//                    maximumLineCount: 5
                 }
             }
         }

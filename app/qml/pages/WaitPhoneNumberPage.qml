@@ -3,6 +3,7 @@ import Ubuntu.Components 1.3
 import QuickFlux 1.1
 import "../actions"
 
+// TODO: Use qqc2-suru
 Page {
     id: waitPhoneNumberPage
 

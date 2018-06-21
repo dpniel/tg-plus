@@ -1,8 +1,11 @@
 {
   "template": "cmake",
-  "kill": "qmlscene",
+  "kill": "telegram-plus",
   "dependencies": [
     "gperf",
-    "libssl-dev"
-  ]
+    "libssl-dev",
+    "qtquickcontrols2-5-dev",
+    "zlib1g-dev"
+  ],
+  "make_jobs": 2
 }
